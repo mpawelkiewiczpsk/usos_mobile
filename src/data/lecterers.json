@@ -1,0 +1,56 @@
+{
+  "list": [{
+    "id": 0,
+    "teacher": "mgr inż. Mateusz Pawełkiewicz",
+    "subjects": [
+      "Aplikacje Mobilne",
+      "Bazy danych 1",
+      "Systemy Operacyjne 2"
+    ]
+  },
+    {
+      "id": 1,
+      "teacher": "dr inż. Karol Wieczorek",
+      "subjects": [
+        "Mobile Application",
+        "Bazy danych 1",
+        "Architektura systemów komputerowych 2"
+      ]
+    },
+    {
+      "id": 2,
+      "teacher": "mgr inż. Leszek Ciopiński",
+      "subjects": [
+        "Podstawy programowania 1",
+        "Programowanie współbieżne",
+        "Architektura systemów komputerowych 1"
+      ]
+    },
+    {
+      "id": 3,
+      "teacher": "mgr inż. Paweł Pięta",
+      "subjects": [
+        "Podstawy programowania 1",
+        "Programowanie w języku C2",
+        "Podstawy grafiki komputerowej"
+      ]
+    },
+    {
+      "id": 4,
+      "teacher": "dr inż. Arkadiusz Chrobot",
+      "subjects": [
+        "Podstawy programowania 1",
+        "Systemy operacyjne 1",
+        "Systemy operacyjne 2"
+      ]
+    },
+    {
+      "id": 5,
+      "teacher": "dr inż. Paweł Paduch",
+      "subjects": [
+        "Programowanie współbieżne",
+        "Technologie informacyjne",
+        "Concurrent Programming"
+      ]
+    }]
+}

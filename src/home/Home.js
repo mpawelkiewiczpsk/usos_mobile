@@ -1,12 +1,17 @@
 import React from "react";
-import { Text } from "react-native";
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import Lecturers from "../lecturers";
 
 
 const Home = () => {
 
-    return(<Text>
-        Home
-    </Text>)
+    const Drawer = createDrawerNavigator();
+
+    return(
+        <Drawer.Navigator initialRouteName="Lecturers">
+            <Drawer.Screen name="Lecturers" component={Lecturers} />
+        </Drawer.Navigator>
+    )
 
 }
 
