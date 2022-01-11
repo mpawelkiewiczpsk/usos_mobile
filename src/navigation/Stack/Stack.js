@@ -29,10 +29,9 @@ const StackNavigation = () => {
 
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Login">
-                {login ? <Stack.Screen name="Home" component={Home}
-                                       options={{headerShown: false}} /> :
-                    <Stack.Screen name="Login" component={Login} />}
+            <Stack.Navigator initialRouteName="Home">
+                <Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
+                <Stack.Screen name="Login" component={Login} />
 
             </Stack.Navigator>
         </NavigationContainer>

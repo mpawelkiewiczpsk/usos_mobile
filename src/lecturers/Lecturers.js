@@ -6,22 +6,42 @@ import { List, TextInput } from 'react-native-paper';
 const Lecturers = () => {
 
     const [list, setList] = useState([]);
-    const [filter, setFilter] = useState([]);
-
-    const checkString = (value) => {
-        return value.teacher.replace(/\s/g, '').toLowerCase().indexOf(filter) >= 0
-    }
+    const [filter, setFilter] = useState('');
 
     useEffect(() => {
         setList(lecturers.list);
     }, [])
 
+    const clearString = (value) => {
+        return value.replace(/\s/g, '').toLowerCase();
+    }
+
+    const checkString = (value) => {
+        return clearString(value).indexOf(clearString(filter)) >= 0
+    }
+
+
     const filterList = (value) => {
         setFilter(value);
-        let tmpList = list.filter(checkString);
+    }
 
-        setList(tmpList);
+    const getData = () => {
 
+        let copyArray = [];
+
+        list.forEach(item => {
+            if(checkString(item.teacher)){
+                copyArray.push(item)
+            }else{
+                item.subjects.forEach(subject => {
+                    if(checkString(subject)){
+                        copyArray.push(item)
+                    }
+                })
+            }
+        })
+
+        return copyArray;
     }
 
 
@@ -33,7 +53,7 @@ const Lecturers = () => {
                 onChangeText={filterList}
             />
             <List.Section title="Lecturers">
-                {list.map((item, index) =>
+                {getData().map((item, index) =>
                     <List.Item key={index} title={item.teacher} />)}
             </List.Section>
         </>
