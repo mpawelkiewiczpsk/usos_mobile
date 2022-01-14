@@ -16,8 +16,12 @@ const Lecturers = () => {
         return value.replace(/\s/g, '').toLowerCase();
     }
 
-    const checkString = (value) => {
-        return clearString(value).indexOf(clearString(filter)) >= 0
+    const checkTeacher = (value) => {
+        return clearString(value.teacher).indexOf(clearString(filter)) >= 0
+    }
+
+    const checkSubjects = (value) => {
+        return clearString(value.subjects.join(",")).indexOf(clearString(filter)) >= 0
     }
 
 
@@ -27,21 +31,7 @@ const Lecturers = () => {
 
     const getData = () => {
 
-        let copyArray = [];
-
-        list.forEach(item => {
-            if(checkString(item.teacher)){
-                copyArray.push(item)
-            }else{
-                item.subjects.forEach(subject => {
-                    if(checkString(subject)){
-                        copyArray.push(item)
-                    }
-                })
-            }
-        })
-
-        return copyArray;
+        return list.filter(checkTeacher) && list.filter(checkSubjects);
     }
 
 
