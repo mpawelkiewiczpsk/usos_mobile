@@ -1,5 +1,5 @@
 import React from "react";
-import { DataTable } from 'react-native-paper';
+import {useTheme, withTheme, DataTable, Text} from "react-native-paper";
 
 const data = [
     {
@@ -19,12 +19,14 @@ const data = [
     }
 ]
 
-const Degree = () => {
+const Grade = ({theme}) => {
+
+    const { colors } = theme;
 
 
     return(
             <DataTable>
-                <DataTable.Header>
+                <DataTable.Header style={{backgroundColor: colors.background}}>
                     <DataTable.Title style={{flex: 1, justifyContent: 'flex-start'}}>Id</DataTable.Title>
                     <DataTable.Title style={{flex: 3, justifyContent: 'flex-start'}} numeric>Subject</DataTable.Title>
                     <DataTable.Title style={{flex: 1, justifyContent: 'flex-start'}} numeric>Degree</DataTable.Title>
@@ -33,7 +35,9 @@ const Degree = () => {
                 {data.map((item, index) => <DataTable.Row key={index}>
                     <DataTable.Cell style={{flex: 1}}>{item.id}</DataTable.Cell>
                     <DataTable.Cell style={{flex: 3}}>{item.subject}</DataTable.Cell>
-                    <DataTable.Cell style={{color: 'red', flex: 1, justifyContent: 'flex-start'}} numeric>{item.degree}</DataTable.Cell>
+                    <DataTable.Cell style={{ flex: 1, justifyContent: 'flex-start'}} numeric>
+                        <Text style={item.degree === 2 && { color: 'red', fontWeight: 'bold' }}>{item.degree}</Text>
+                    </DataTable.Cell>
                 </DataTable.Row>)}
 
             </DataTable>
@@ -42,4 +46,4 @@ const Degree = () => {
 }
 
 
-export default Degree;
+export default withTheme(Grade);

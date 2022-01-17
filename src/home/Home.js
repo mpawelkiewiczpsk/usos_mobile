@@ -1,7 +1,7 @@
 import React from "react";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Lecturers from "../lecturers";
-import Degree from "../degree";
+import Grade from "../grade";
 
 
 const Home = () => {
@@ -11,7 +11,7 @@ const Home = () => {
     return(
         <Drawer.Navigator initialRouteName="Lecturers">
             <Drawer.Screen name="Lecturers" component={Lecturers} />
-            <Drawer.Screen name="Degree" component={Degree} />
+            <Drawer.Screen name="Grade" component={Grade} />
         </Drawer.Navigator>
     )
 

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import lecturers from "../data/lecterers.json"
-import { List, TextInput } from 'react-native-paper';
+import { List, Searchbar } from 'react-native-paper';
+import { ScrollView, SafeAreaView } from "react-native";
 
 
 const Lecturers = () => {
@@ -24,29 +25,28 @@ const Lecturers = () => {
         return clearString(value.subjects.join(",")).indexOf(clearString(filter)) >= 0
     }
 
-
-    const filterList = (value) => {
-        setFilter(value);
-    }
+    const onChangeSearch = query => setFilter(query);
 
     const getData = () => {
 
-        return list.filter(checkTeacher) && list.filter(checkSubjects);
+        return [...new Set(list.filter(checkTeacher).concat(list.filter(checkSubjects)))];
     }
 
 
     return(
-        <>
-            <TextInput
-                label="Email"
+        <SafeAreaView>
+            <ScrollView>
+            <Searchbar
+                placeholder="Wyszukaj"
+                onChangeText={onChangeSearch}
                 value={filter}
-                onChangeText={filterList}
             />
             <List.Section title="Lecturers">
                 {getData().map((item, index) =>
                     <List.Item key={index} title={item.teacher} />)}
             </List.Section>
-        </>
+            </ScrollView>
+        </SafeAreaView>
 
 
     )
