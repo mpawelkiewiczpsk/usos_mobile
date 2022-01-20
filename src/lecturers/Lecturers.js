@@ -2,12 +2,14 @@ import React, {useState, useEffect} from "react";
 import lecturers from "../data/lecterers.json"
 import { List, Searchbar } from 'react-native-paper';
 import { ScrollView, SafeAreaView } from "react-native";
+import DialogInfo from "../components/DialogInfo";
 
 
 const Lecturers = () => {
 
     const [list, setList] = useState([]);
     const [filter, setFilter] = useState('');
+    const [data, setData] = useState(null);
 
     useEffect(() => {
         setList(lecturers.list);
@@ -32,9 +34,14 @@ const Lecturers = () => {
         return [...new Set(list.filter(checkTeacher).concat(list.filter(checkSubjects)))];
     }
 
+    const displayInfo = (item) => {
+        setData(item.subjects);
+    }
+
 
     return(
         <SafeAreaView>
+            <DialogInfo data={data}/>
             <ScrollView>
             <Searchbar
                 placeholder="Wyszukaj"
@@ -43,7 +50,7 @@ const Lecturers = () => {
             />
             <List.Section title="Lecturers">
                 {getData().map((item, index) =>
-                    <List.Item key={index} title={item.teacher} />)}
+                    <List.Item key={index} title={item.teacher} onPress={() => displayInfo(item)} />)}
             </List.Section>
             </ScrollView>
         </SafeAreaView>

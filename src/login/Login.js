@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { View, StyleSheet } from "react-native";
-import { TextInput, Button, Snackbar } from 'react-native-paper';
+import { TextInput, Button, Snackbar, useTheme } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -10,6 +10,8 @@ const Login = ({navigation}) => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [visible, setVisible] = React.useState(false);
+
+    const { colors } = useTheme();
 
     const onToggleSnackBar = () => setVisible(!visible);
 
@@ -60,7 +62,7 @@ const Login = ({navigation}) => {
                 value={password}
                 onChangeText={setPassword}
             />
-            <Button mode="contained" onPress={() => checkLogin()}>
+            <Button mode="contained" onPress={() => checkLogin()} style={{background: colors.primary}}>
                 Login
             </Button>
             </View>

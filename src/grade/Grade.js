@@ -1,5 +1,5 @@
 import React from "react";
-import {useTheme, withTheme, DataTable, Text} from "react-native-paper";
+import {DataTable, Text, useTheme} from "react-native-paper";
 
 const data = [
     {
@@ -19,9 +19,9 @@ const data = [
     }
 ]
 
-const Grade = ({theme}) => {
+const Grade = () => {
 
-    const { colors } = theme;
+    const { colors } = useTheme();
 
 
     return(
@@ -36,7 +36,7 @@ const Grade = ({theme}) => {
                     <DataTable.Cell style={{flex: 1}}>{item.id}</DataTable.Cell>
                     <DataTable.Cell style={{flex: 3}}>{item.subject}</DataTable.Cell>
                     <DataTable.Cell style={{ flex: 1, justifyContent: 'flex-start'}} numeric>
-                        <Text style={item.degree === 2 && { color: 'red', fontWeight: 'bold' }}>{item.degree}</Text>
+                        <Text style={item.degree === 2 && { color: colors.danger, fontWeight: 'bold' }}>{item.degree}</Text>
                     </DataTable.Cell>
                 </DataTable.Row>)}
 
@@ -46,4 +46,4 @@ const Grade = ({theme}) => {
 }
 
 
-export default withTheme(Grade);
+export default Grade;
