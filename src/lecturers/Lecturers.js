@@ -35,13 +35,18 @@ const Lecturers = () => {
     }
 
     const displayInfo = (item) => {
-        setData(item.subjects);
+        setData({...item, visible: true});
+
+    }
+
+    const hideDialog = () => {
+        setData({...data, visible: false});
     }
 
 
     return(
         <SafeAreaView>
-            <DialogInfo data={data}/>
+            <DialogInfo data={data} hideDialogFromParent={hideDialog} />
             <ScrollView>
             <Searchbar
                 placeholder="Wyszukaj"
